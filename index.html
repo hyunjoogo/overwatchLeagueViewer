@@ -9,21 +9,20 @@
   <title>오버워치뷰어</title>
 </head>
 <body>
-<h1>오버워치 뷰어</h1>
-
+<h1>오버워치 뷰어 Made By 키유</h1>
+<span>
+  1. 화면 항상 켜기 설정을 잊지마세요.<br>
+  2. 리워드 연결이 되어 있는지 확인해주세요.<br>
+  3. 꼭 테스트를 해보시기 바랍니다.<br>
+</span>
 <h2>예약정보를 입력해주세요</h2>
-
-<label for="urlInput">유튜브의 주소를 입력해주세요.</label>
+<label for="urlInput">1. 복사한 유튜브의 주소를 입력해주세요.</label>
 <input id="urlInput"/>
-<label for="timeInput">몇시 경기인가요?</label>
-<label for="timeInput">예시: 2022.5.5. 오전 02:01</label>
+<label for="timeInput">2. 몇시 경기인가요? 예시: 2022.5.5. 오전 02:01 </label>
 <input type="datetime-local" id="timeInput"/>
 
 <button type="button" class="btn">시작!</button>
-
-<button type="button" class="testBtn">
-  테스트
-</button>
+<button type="button" class="testBtn">연결 테스트(바로 이동)</button>
 <h5 class="alertMessage"></h5>
 <h6></h6>
 <script src="moment.js"></script>
@@ -64,7 +63,10 @@
       return alert('과거는 안됩니다');
     }
     const seconds = subtractTime(time);
-    alertMessage.textContent = `${Math.ceil(seconds) + 10}초 후에 입력하신 페이지로 이동합니다.`;
+    alertMessage.textContent = `${Math.ceil(seconds) + 10}초 후에 입력하신 페이지로 이동합니다.`
+    setInterval(() => {
+      alertMessage.textContent = `${Math.ceil(subtractTime(time)) + 10}초 후에 입력하신 페이지로 이동합니다.`;
+    }, 1000);
     setTimeout(() => openPage(url), (seconds + 10) * 1000);
   };
 
