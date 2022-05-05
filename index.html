@@ -5,10 +5,52 @@
   <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://cdn.simplecss.org/simple.css">
   <title>오버워치뷰어</title>
 </head>
 <body>
 <h1>오버워치 뷰어</h1>
-<a href="https://www.youtube.com/watch?v=er9SAks_Ug4">aa</a>
+
+<h2>주소받기</h2>
+
+<label>유튜브의 주소를 입력해주세요.</label>
+<input class="urlInput"/>
+<label>몇시 경기인가요? 예시: 05-06-04</label>
+<input class="time"/>
+
+<button type="button" class="btn">시작!</button>
+
+<button type="button" class="testBtn">
+  테스트
+</button>
+
+<h6>https://www.youtube.com/watch?v=er9SAks_Ug4</h6>
+<script>
+  const urlInput = document.querySelector('.urlInput');
+  const time = document.querySelector('.time');
+  const btn = document.querySelector('.btn');
+  const testBtn = document.querySelector('.testBtn');
+  const link = document.querySelector('.link');
+
+  const checkValue = (url) => {
+    if (url === "") {
+      return alert('빈칸을 입력하시면 안됩니다');
+    }
+  };
+
+  const clickAnchor = (url) => {
+    const a = document.createElement('a');
+    a.href = url;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+  };
+
+
+
+  testBtn.addEventListener('click', () => clickAnchor(checkValue(urlInput.value)));
+  btn.addEventListener('click', () => checkValue());
+
+</script>
 </body>
 </html>
